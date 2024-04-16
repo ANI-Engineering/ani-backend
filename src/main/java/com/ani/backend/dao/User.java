@@ -44,7 +44,8 @@ public class User {
 
     @ElementCollection
     @CollectionTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"))
-    private List<Permission> permissions;
+    @JsonIgnore
+    private List<UserPermission> userPermissions;
 }
 
 
