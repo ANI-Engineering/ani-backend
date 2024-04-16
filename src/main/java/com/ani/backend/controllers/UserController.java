@@ -3,9 +3,9 @@ package com.ani.backend.controllers;
 import com.ani.backend.dao.User;
 import com.ani.backend.service.UserService;
 import com.ani.backend.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -28,7 +28,7 @@ public class UserController {
         if (user != null) {
             Map<String, Object> response = new HashMap<>();
             response.put("userType", user.getUserType());
-            response.put("permissions", user.getPermissions());
+            response.put("permissions", user.getUserPermissions());
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.notFound().build();
@@ -37,9 +37,9 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         if (userRepository.existsByEmail(user.getEmail())) {
-            user.setUser_creation_date(new Date());
             return ResponseEntity.badRequest().build();
         }
+        user.setUser_creation_date(new Date());
         User savedUser = userRepository.save(user);
         return ResponseEntity.ok(savedUser);
     }
@@ -78,6 +78,7 @@ public class UserController {
         return ResponseEntity.ok(userRepository.save(existingUser));
     }
     @DeleteMapping("/delete/{email}")
+    @Transactional
     public ResponseEntity<Void> deleteUserByEmail(@PathVariable("email") String email) {
         if (!userRepository.existsByEmail(email)) {
             return ResponseEntity.notFound().build();
