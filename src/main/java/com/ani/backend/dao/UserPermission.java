@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Embeddable
 @Data
-public class Permission {
+public class UserPermission {
 
     private String resource;
 
