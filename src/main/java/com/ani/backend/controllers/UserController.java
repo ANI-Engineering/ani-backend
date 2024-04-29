@@ -52,7 +52,7 @@ public class UserController {
     public ResponseEntity<User> updateUser(@PathVariable("email") String email, @RequestBody User user) {
         Optional<User> existingUserOptional = Optional.ofNullable(userRepository.findByEmail(email));
 
-        if (!existingUserOptional.isPresent()) {
+        if (existingUserOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         User existingUser = existingUserOptional.get();
