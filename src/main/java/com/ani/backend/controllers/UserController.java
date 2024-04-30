@@ -73,7 +73,6 @@ public class UserController {
         existingUser.setCity(user.getCity());
         existingUser.setUser_creation_date(user.getUser_creation_date());
         existingUser.setUser_status(user.getUser_status());
-        existingUser.setUserType(user.getUserType());
 
         return ResponseEntity.ok(userRepository.save(existingUser));
     }
