@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Service
 public class pdfService {
 
-      
+      // adding A4-size-page
         public void export(HttpServletResponse response) throws IOException{
         float width = PageSize.A4.getWidth() + 60; // Increase the width by 10 units
         float height = PageSize.A4.getHeight() + 30; // Increase the height by 10 units
@@ -112,26 +112,20 @@ public class pdfService {
              table6.setBorderColor(CMYKColor.BLACK); // Set border color to black
              document.add(table6);
     
-    
+             // adding user details tittle
              Font font1Tittle1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
               font1Tittle1.setSize(15);
               Paragraph paragraphh = new Paragraph("USER DETAILS", font1Tittle1);
               paragraphh.setAlignment(Paragraph.ALIGN_LEFT);
               document.add(paragraphh);
               
-                  
-                //  add the  booking date 
+
                PdfPTable table5 = new PdfPTable(2);
-               //table5.setWidthPercentage(30);
                table5.setHorizontalAlignment(Element.ALIGN_RIGHT);
                PdfPTable outerTable = new PdfPTable(2);
                 outerTable.setWidthPercentage(100);
-    
-              
                 outerTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-                // float[] Columnwidths = {0.10f, 0.4f};
-                // outerTable.setWidths(Columnwidths);
-                
+              
             
                PdfPCell cell3 = new PdfPCell(new Phrase("Invoice Date:"));
                cell3.setBorder(Rectangle.NO_BORDER);
@@ -177,17 +171,12 @@ public class pdfService {
                cell4.setBorder(Rectangle.NO_BORDER);
                table5.addCell(cell4);
              
-    
-    
                PdfPTable table7 = new PdfPTable(2);
-               //table7.setWidthPercentage(30);
                table7.setHorizontalAlignment(Element.ALIGN_LEFT);
-               
                
                PdfPCell cell5 = new PdfPCell(new Phrase("Name:"));
                cell5.setBorder(Rectangle.NO_BORDER);
                table7.addCell(cell5);
-               
                
                PdfPCell cell7 = new PdfPCell(new Phrase("Mithilesh", font));
                cell7.setBorder(Rectangle.NO_BORDER);
@@ -196,8 +185,7 @@ public class pdfService {
                cell5 = new PdfPCell(new Phrase("Phone No:"));
                cell5.setBorder(Rectangle.NO_BORDER);
                table7.addCell(cell5);
-               
-               
+                
                cell7 = new PdfPCell(new Phrase("8887689276", font));
                cell7.setBorder(Rectangle.NO_BORDER);
                table7.addCell(cell7);
@@ -210,19 +198,15 @@ public class pdfService {
                cell7 = new PdfPCell(new Phrase("mithleshpatel887766@gmail.com", font));
                cell7.setBorder(Rectangle.NO_BORDER);
                table7.addCell(cell7);
-    
-                // document.add(table7);
-                // document.add(table5);
-    
-                
-             outerTable.addCell(table7);
-             outerTable.addCell(table5);
-            document.add(outerTable);
+       
+              outerTable.addCell(table7);
+              outerTable.addCell(table5);
+              document.add(outerTable);
     
     
             
       
-              //*********************************************** */
+              //*adding user booking details 
                
               Font font1Tittle = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
               fontTittle.setSize(15);
@@ -267,17 +251,15 @@ public class pdfService {
         table.addCell(new Phrase("₹2,520"));
         document.add(table);
     
+        // adding user payment details
         Font font2Tittle = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         fontTittle.setSize(15);
-    
         Paragraph paragraph3 = new Paragraph("PAYMENT DETAILS", font2Tittle);
         paragraph3.setAlignment(Paragraph.ALIGN_LEFT);
         document.add(paragraph3); 
     
         Table table1 = new Table(5);
         table1.setBorderColor(CMYKColor.GRAY);
-        //Font fontTable1 = FontFactory.getFont(FontFactory.HELVETICA);
-        //fontTable1.setSize(10);
         table1.setWidth(100);
         table1.addCell(new Phrase("PAYMENT ID"));
         table1.addCell(new Phrase("DATE")); 
