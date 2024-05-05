@@ -1,22 +1,8 @@
 package com.ani.backend.service;
-
 import java.io.IOException;
-//import java.util.concurrent.Phaser;
-
-//import javax.lang.model.element.ElementKind;
-
-//import javax.swing.border.Border;
-
 import org.springframework.stereotype.Service;
-
-// import com.lowagie.text.Cell;
-/////import com.itextpdf.text.Rectangle;
-//import com.itextpdf.layout.property.TabAlignment;
-//import com.lowagie.text.Cell;
-//import com.lowagie.text.Cell;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
-//import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Image;
@@ -34,7 +20,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @Service
 public class pdfService {
 
-    public void export(HttpServletResponse response) throws IOException{
+      
+        public void export(HttpServletResponse response) throws IOException{
         float width = PageSize.A4.getWidth() + 60; // Increase the width by 10 units
         float height = PageSize.A4.getHeight() + 30; // Increase the height by 10 units
         Rectangle customSize = new Rectangle(width, height);
