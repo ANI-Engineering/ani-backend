@@ -13,11 +13,11 @@ import com.ani.backend.service.pdfService;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
-public class pdfController {
+public class PdfController {
 
     private final pdfService Pdfservice;
 
-    public pdfController(pdfService Pdfservice) {
+    public PdfController(pdfService Pdfservice) {
 
         this.Pdfservice = Pdfservice;
     }
