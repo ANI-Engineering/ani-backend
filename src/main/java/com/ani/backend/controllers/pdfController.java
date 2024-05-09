@@ -5,20 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.ani.backend.service.PdfService;
 import jakarta.servlet.http.HttpServletResponse;
-
+@Service
 @Controller
 public class PdfController {
     @Autowired
     private PdfService pdfService;
 
-   
     public PdfController(PdfService pdfService) {
         this.pdfService = pdfService;
     }
-   
+
     @GetMapping("pdf/generate")
     public void generatePdf(HttpServletResponse response) throws IOException {
         response.setContentType("application/pdf");
