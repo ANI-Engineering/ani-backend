@@ -2,14 +2,19 @@ package com.ani.backend.dao;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 @Table(name = "property")
+@Data
 public class Property {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "property_id")
     private int propertyId;
 
@@ -28,6 +33,12 @@ public class Property {
     @Column(name = "description")
     private String description;
 
+    @Column(name="location")
+    private String location;
+
+    @Column(name="near_by_location")
+    private String nearByLocation;
+
     @Column(name = "flat_no")
     private String flatNo;
 
@@ -43,4 +54,6 @@ public class Property {
     @Column(name = "building_id")
     private int buildingId;
 
+    @Column(name="max_guest_allowed")
+    private String maxGuestAllowed;
 }
