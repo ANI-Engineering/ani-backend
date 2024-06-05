@@ -22,7 +22,7 @@ public class PropertyReview {
     private int bookingId;
 
     @Column(name = "user_id")
-    private int userId;
+    private String userId;
 
     @Column(name = "review")
     private String review;
