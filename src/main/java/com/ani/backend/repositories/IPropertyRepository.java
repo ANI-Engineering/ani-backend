@@ -1,6 +1,7 @@
 package com.ani.backend.repositories;
 
 import com.ani.backend.dao.Property;
+import com.ani.backend.response.property.PropertyResponse;
 import com.ani.backend.response.property.PropertyThumbnailResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -112,6 +113,27 @@ public interface IPropertyRepository extends JpaRepository<Property, Integer> {
     )
     Page<PropertyThumbnailResponse> findAllPropertiesThumbnailPaginatedWithDates(Pageable pageable, LocalDate startDate, LocalDate endDate, String location);
 
-
+    @Query(value = "SELECT \n" +
+            "p.property_id , \n" +
+            "p.property_type , \n" +
+            "b.building_name  , \n" +
+            "b.location , \n" +
+            "pp.property_price  , \n" +
+            "pr.rating ,\n" +
+            "pi2.image_url \n" +
+            "FROM anidb.property p \n" +
+            "JOIN building b \n" +
+            "on b.building_id = p.building_id \n" +
+            "JOIN property_image pi2 \n" +
+            "on p.property_id = pi2.property_id \n" +
+            "join property_price pp \n" +
+            "on pp.property_id = p.property_id \n" +
+            "join property_review pr \n" +
+            "on pr.property_id = p.property_id\n" +
+            "where p.property_id = ':id';",
+            countQuery = "SELECT COUNT(*) FROM PROPERTY",
+            nativeQuery = true
+    )
+    Property findAllProperties(int id);
 
 }
