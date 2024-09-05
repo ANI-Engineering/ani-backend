@@ -43,4 +43,7 @@ public class Booking {
     @Column(name = "infant_count")
     private int infantCount;
 
+    @Column(name = "metadata")
+    private String metadata;
+
 }
