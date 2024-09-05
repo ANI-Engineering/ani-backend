@@ -4,33 +4,37 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "property_review")
+@Data
 public class PropertyReview {
 
     @Id
     @Column(name = "property_review_id")
-    private int propertyReviewId;
+    private Integer propertyReviewId;
 
     @Column(name = "property_id")
-    private int propertyId;
+    private Integer propertyId;
 
     @Column(name = "booking_id")
-    private int bookingId;
+    private Integer bookingId;
 
     @Column(name = "user_id")
-    private int userId;
+    private String userId;
 
     @Column(name = "review")
     private String review;
 
     @Column(name = "rating")
-    private float rating;
+    private Double rating;
 
     @Column(name = "date_created")
     private LocalDateTime date_created;
 
+    @Column(name = "property_reviewcol")
+    private String propertyReviewcol;
 }
